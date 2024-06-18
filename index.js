@@ -57,3 +57,29 @@ const employeeAdd = [
         name: "manager"
     }
 ]
+
+//fetch request from the inquirer to get info from the server api
+
+function viewAllEmployees() {
+    fetch('http://localhost:3001/api/employee')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data.data);
+        })
+}
+
+
+inquirer
+    .prompt(initialQuestion)
+    .then((response) => {
+        if (response.actions === "Add a department") {
+            inquirer.prompt(departmentAdd).then((departmentAddResponse) => {
+                console.log(departmentAddResponse);
+            })
+        }
+        if (response.actions === "View all employees") {
+            viewAllEmployees()
+        }
+    })
