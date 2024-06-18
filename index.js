@@ -9,7 +9,6 @@ const initialQuestion = [
     },
 ];
 
-
 const departmentAdd = [
     {
         type: "input",
