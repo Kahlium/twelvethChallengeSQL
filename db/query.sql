@@ -1,0 +1,1 @@
+SELECT employee.role_id AS roles, roles.title FROM roles LEFT JOIN roles ON employee.role_id = role_id

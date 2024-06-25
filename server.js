@@ -19,8 +19,38 @@ const pool = new Pool(
 
 pool.connect();
 
+app.get('/api/department', (req, res) => {
+  const sql = `SELECT * FROM department`;
+
+  pool.query(sql, (err, { rows }) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+
+app.get('/api/roles', (req, res) => {
+  const sql = `SELECT * FROM roles`;
+
+  pool.query(sql, (err, { rows }) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+
 app.get('/api/employee', (req, res) => {
-    const sql = `SELECT id, first_name FROM employee`;
+    const sql = `SELECT * FROM employee`;
   
     pool.query(sql, (err, { rows }) => {
       if (err) {
