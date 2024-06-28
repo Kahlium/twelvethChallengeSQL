@@ -83,14 +83,14 @@ inquirer
         }
         if (response.actions === "Add a role") {
             inquirer
-            .prompt(departmentAdd)
+            .prompt(roleAdd)
             .then((roleAddResponse) => {
                 functions.postRoles(roleAddResponse);
             })
         }
         if (response.actions === "Add an employee") {
             inquirer
-            .prompt(departmentAdd)
+            .prompt(employeeAdd)
             .then((employeeAddResponse) => {
                 functions.postEmployee(employeeAddResponse);
             })

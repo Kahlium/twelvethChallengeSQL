@@ -1,4 +1,5 @@
 
+
 class InquirerFunctions {
 
     viewAllDepartments() {
@@ -32,7 +33,8 @@ class InquirerFunctions {
     }
 
     postDepartment(department) {
-        fetch('api/department', {
+        console.log("POST department", JSON.stringify(department))
+        fetch('http://localhost:3001/api/department2', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,6 +44,7 @@ class InquirerFunctions {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.data)
+                return data;
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -82,5 +85,6 @@ class InquirerFunctions {
             });
     }
 };
+
 
 module.exports = InquirerFunctions;

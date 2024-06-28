@@ -1,5 +1,6 @@
 const express = require('express');
 const { Pool } = require('pg');
+const InquirerFunctions = require("./functions.js")
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -64,6 +65,20 @@ app.get('/api/employee', (req, res) => {
     });
   });
 
+  app.post('/api/department2', (req, res) => {
+    const { department_name } = req.body;
+    const sql = `INSERT INTO department (department_name) VALUES ('${department_name}')`
+    
+    pool.query(sql, (err, { rows }) => {
+      const response = {
+        status: 'success',
+        data: department_name,
+      }
+    res.status(201).json(response);
+
+    })
+
+  });
 
 
 // Default response for any other request (Not Found)
